@@ -25,7 +25,7 @@ session = create_session()
 
 def fetch_poster(movie_id):
     url = "https://api.themoviedb.org/3/movie/{}".format(movie_id)
-    params = {"api_key": "TMDB_API_KEY", "language": "en-US"}
+    params = {"api_key": TMDB_API_KEY, "language": "en-US"}
     
     try:
         response = session.get(url, params=params, timeout=15)
