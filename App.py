@@ -6,8 +6,12 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-TMDB_API_KEY = os.environ["TMDB_API_KEY"]
+TMDB_API_KEY = os.getenv("TMDB_API_KEY")
 
+if not TMDB_API_KEY:
+    st.error("TMDB_API_KEY is not configured.")
+    st.stop()
+    
 def create_session():
     session = requests.Session()
     retries = Retry(
