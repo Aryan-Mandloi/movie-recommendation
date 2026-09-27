@@ -6,6 +6,8 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
+TMDB_API_KEY = os.environ["TMDB_API_KEY"]
+
 def create_session():
     session = requests.Session()
     retries = Retry(
@@ -23,7 +25,7 @@ session = create_session()
 
 def fetch_poster(movie_id):
     url = "https://api.themoviedb.org/3/movie/{}".format(movie_id)
-    params = {"api_key": "3061d091875062bf936ae6be19412b7d", "language": "en-US"}
+    params = {"api_key": "TMDB_API_KEY", "language": "en-US"}
     
     try:
         response = session.get(url, params=params, timeout=15)
